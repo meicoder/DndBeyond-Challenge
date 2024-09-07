@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import styles from './talentitem.module.css';
+import { usePointsStore } from '../../store';
 
 const CLICK_BUTTON = {
     LEFT: 0,
@@ -15,6 +16,8 @@ interface TalentItemProps {
 const TalentItem = ({ iconNumber, lastIconNumber }: TalentItemProps) => {
     const [active, setActive] = useState(false);
     const [isValid, setIsValid] = useState(true);
+    const increment = usePointsStore((state) => state.increment);
+    const decrement = usePointsStore((state) => state.decrement);
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (e.button === CLICK_BUTTON.LEFT) {
             if (active) {
@@ -24,6 +27,7 @@ const TalentItem = ({ iconNumber, lastIconNumber }: TalentItemProps) => {
                 }, 500);
             } else {
                 setActive(true);
+                increment();
             }
         } else if (e.button === CLICK_BUTTON.RIGHT) {
             if (!active) {
@@ -33,6 +37,7 @@ const TalentItem = ({ iconNumber, lastIconNumber }: TalentItemProps) => {
                 }, 500);
             } else {
                 setActive(false);
+                decrement();
             }
         }
     };
