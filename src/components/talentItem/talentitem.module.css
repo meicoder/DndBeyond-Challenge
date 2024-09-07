@@ -1,0 +1,108 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.connector {
+    height: 0.8rem;
+    width: 5.5rem;
+    background-color: #313234;
+    border: 1px solid #3e3f41;
+    margin-inline: 3px;
+}
+.item {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../../assets/talent-icons-sprite.png');
+    background-repeat: no-repeat;
+}
+.item::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 6px);
+    height: calc(50% + 6px);
+    background-color: #505050;
+    pointer-events: none;
+    top: -3px;
+    left: -3px;
+    z-index: -1;
+}
+
+.item::after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 6px);
+    height: 50%;
+    background-color: #4444;
+    pointer-events: none;
+    top: calc(50% + 3px);
+    left: -3px;
+    z-index: 0;
+}
+
+.item1 {
+    background-position: 0 -3.2rem;
+}
+.item2 {
+    background-position: -3.3rem -3.2rem;
+}
+.item3 {
+    background-position: -6.3rem -3.2rem;
+}
+.item4 {
+    background-position: -9.4rem -3.2rem;
+}
+.item5 {
+    background-position: -12.5rem -3.2rem;
+}
+.item6 {
+    background-position: -15.7rem -3.2rem;
+}
+.item7 {
+    background-position: -18.8rem -3.2rem;
+}
+.item8 {
+    background-position: -21.9rem -3.2rem;
+}
+
+.active {
+    background-position-y: 0;
+}
+
+.active::before {
+    background-color: #6faae6;
+    z-index: -1;
+}
+
+.active::after {
+    background: linear-gradient(to bottom, #233a4f, #5f9bd6);
+    z-index: -1;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.item.shake::before,
+.item.shake::after {
+    z-index: -1;
+    height: 0;
+}
