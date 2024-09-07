@@ -1,8 +1,8 @@
-import { usePointsStore } from '../../store';
+import { useCalculatorStore } from '../../store';
 import styles from './calculator.module.css';
 const Calculator = () => {
-    const total = usePointsStore((state) => state.total);
-    const current = usePointsStore((state) => state.current);
+    const total = useCalculatorStore((state) => state.totalPoints);
+    const current = useCalculatorStore((state) => state.currentPoints);
 
     return (
         <div className={styles.container}>

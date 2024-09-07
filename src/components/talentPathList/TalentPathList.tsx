@@ -1,20 +1,13 @@
+import { useCalculatorStore } from '../../store';
 import Path from '../path/Path';
 import classes from './talentPathList.module.css';
 
-interface TalentPathListProps {
-    data: { [key: number]: number[] };
-}
-const TalentPathList = ({ data }: TalentPathListProps) => {
+const TalentPathList = () => {
+    const paths = useCalculatorStore((state) => state.paths);
     return (
         <div className={classes.container}>
-            {Object.keys(data).map((path) => {
-                return (
-                    <Path
-                        key={path}
-                        pathNumber={path}
-                        items={data[Number(path)]}
-                    />
-                );
+            {paths.map((path) => {
+                return <Path key={path.id} path={path} />;
             })}
         </div>
     );

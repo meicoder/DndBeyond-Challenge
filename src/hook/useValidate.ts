@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePointsStore } from '../store';
+import { useCalculatorStore } from '../store';
 
 const CLICK_BUTTON = {
     LEFT: 0,
@@ -10,21 +10,56 @@ const useValidate = () => {
     const [active, setActive] = useState(false);
     const [isValid, setIsValid] = useState(true);
 
-    const total = usePointsStore((state) => state.total);
-    const current = usePointsStore((state) => state.current);
-    const increment = usePointsStore((state) => state.increment);
-    const decrement = usePointsStore((state) => state.decrement);
+    const totalPoints = useCalculatorStore((state) => state.totalPoints);
+    const currentPoints = useCalculatorStore((state) => state.currentPoints);
+    const paths = useCalculatorStore((state) => state.paths);
+    const addItem = useCalculatorStore((state) => state.addItem);
+    const removeItem = useCalculatorStore((state) => state.removeItem);
 
-    const validate = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const checkDependencies = (pathId: number, iconNumber: number) => {
+        const pathSelected = paths.find((path) => path.id === pathId);
+
+        if (!pathSelected) {
+            return false;
+        }
+
+        if (
+            pathSelected.selectedItems.length === 0 &&
+            iconNumber === pathSelected.items[0]
+        ) {
+            return false;
+        }
+
+        return (
+            pathSelected.selectedItems[pathSelected.selectedItems.length - 1] +
+                1 !==
+            iconNumber
+        );
+    };
+
+    const validate = (
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        pathId: number,
+        iconNumber: number
+    ) => {
         if (e.button === CLICK_BUTTON.LEFT) {
-            if (active || current >= total) {
+            const pathSelected = paths.find((path) => path.id === pathId);
+            if (!pathSelected) {
+                return;
+            }
+
+            if (
+                active ||
+                currentPoints >= totalPoints ||
+                checkDependencies(pathId, iconNumber)
+            ) {
                 setIsValid(false);
                 setTimeout(() => {
                     setIsValid(true);
                 }, 500);
             } else {
                 setActive(true);
-                increment();
+                addItem(pathId, iconNumber);
             }
         } else if (e.button === CLICK_BUTTON.RIGHT) {
             if (!active) {
@@ -34,7 +69,7 @@ const useValidate = () => {
                 }, 500);
             } else {
                 setActive(false);
-                decrement();
+                removeItem(pathId, iconNumber);
             }
         }
     };

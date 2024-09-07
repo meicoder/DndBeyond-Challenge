@@ -4,13 +4,18 @@ import useValidate from '../../hook/useValidate';
 
 interface TalentItemProps {
     iconNumber: number;
+    pathId: number;
     lastIconNumber: number;
 }
 
-const TalentItem = ({ iconNumber, lastIconNumber }: TalentItemProps) => {
+const TalentItem = ({
+    iconNumber,
+    pathId,
+    lastIconNumber
+}: TalentItemProps) => {
     const { active, isValid, validate } = useValidate();
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        validate(e);
+        validate(e, pathId, iconNumber);
     };
     const handleContextMenu = (
         e: React.MouseEvent<HTMLDivElement, MouseEvent>
