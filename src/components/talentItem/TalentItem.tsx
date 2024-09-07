@@ -1,12 +1,6 @@
-import { useState } from 'react';
 import classNames from 'classnames';
 import styles from './talentitem.module.css';
-import { usePointsStore } from '../../store';
-
-const CLICK_BUTTON = {
-    LEFT: 0,
-    RIGHT: 2
-};
+import useValidate from '../../hook/useValidate';
 
 interface TalentItemProps {
     iconNumber: number;
@@ -14,32 +8,9 @@ interface TalentItemProps {
 }
 
 const TalentItem = ({ iconNumber, lastIconNumber }: TalentItemProps) => {
-    const [active, setActive] = useState(false);
-    const [isValid, setIsValid] = useState(true);
-    const increment = usePointsStore((state) => state.increment);
-    const decrement = usePointsStore((state) => state.decrement);
+    const { active, isValid, validate } = useValidate();
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        if (e.button === CLICK_BUTTON.LEFT) {
-            if (active) {
-                setIsValid(false);
-                setTimeout(() => {
-                    setIsValid(true);
-                }, 500);
-            } else {
-                setActive(true);
-                increment();
-            }
-        } else if (e.button === CLICK_BUTTON.RIGHT) {
-            if (!active) {
-                setIsValid(false);
-                setTimeout(() => {
-                    setIsValid(true);
-                }, 500);
-            } else {
-                setActive(false);
-                decrement();
-            }
-        }
+        validate(e);
     };
     const handleContextMenu = (
         e: React.MouseEvent<HTMLDivElement, MouseEvent>
