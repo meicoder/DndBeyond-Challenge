@@ -1,8 +1,8 @@
 import { useCalculatorStore } from '../../store';
 import Path from '../path/Path';
-import styles from './talentPathList.module.css';
+import styles from './pathList.module.css';
 
-const TalentPathList = () => {
+const PathList = () => {
     const paths = useCalculatorStore((state) => state.paths);
     return (
         <div className={styles.container}>
@@ -13,4 +13,4 @@ const TalentPathList = () => {
     );
 };
 
-export default TalentPathList;
+export default PathList;

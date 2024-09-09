@@ -1,5 +1,5 @@
 import type { Path } from '../../store';
-import TalentItem from '../talentItem/TalentItem';
+import Talent from '../talent/Talent';
 import styles from './path.module.css';
 
 interface PathProps {
@@ -13,7 +13,7 @@ const Path = ({ path }: PathProps) => {
             <div className={styles.itemList}>
                 {items.map((item) => {
                     return (
-                        <TalentItem
+                        <Talent
                             key={item}
                             iconNumber={item}
                             pathId={id}

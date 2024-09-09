@@ -1,6 +1,6 @@
 import { useCalculatorStore } from '../../store';
-import styles from './calculator.module.css';
-const Calculator = () => {
+import styles from './points.module.css';
+const Points = () => {
     const total = useCalculatorStore((state) => state.totalPoints);
     const current = useCalculatorStore((state) => state.currentPoints);
 
@@ -14,4 +14,4 @@ const Calculator = () => {
     );
 };
 
-export default Calculator;
+export default Points;

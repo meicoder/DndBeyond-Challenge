@@ -1,18 +1,14 @@
 import classNames from 'classnames';
-import styles from './talentitem.module.css';
+import styles from './talent.module.css';
 import useValidate from '../../hook/useValidate';
 
-interface TalentItemProps {
+interface TalentProps {
     iconNumber: number;
     pathId: number;
     lastIconNumber: number;
 }
 
-const TalentItem = ({
-    iconNumber,
-    pathId,
-    lastIconNumber
-}: TalentItemProps) => {
+const Talent = ({ iconNumber, pathId, lastIconNumber }: TalentProps) => {
     const { active, isValid, validate } = useValidate();
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         validate(e, pathId, iconNumber);
@@ -48,4 +44,4 @@ const TalentItem = ({
     );
 };
 
-export default TalentItem;
+export default Talent;

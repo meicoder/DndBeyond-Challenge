@@ -1,12 +1,12 @@
-import Calculator from '../calculator/Calculator';
-import TalentPathList from '../talentPathList/TalentPathList';
+import Points from '../points/Points';
+import PathList from '../pathList/PathList';
 import styles from './TalentCalculator.module.css';
 
 const TalentCalculator = () => {
     return (
         <div className={styles.container}>
-            <TalentPathList />
-            <Calculator />
+            <PathList />
+            <Points />
         </div>
     );
 };
