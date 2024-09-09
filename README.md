@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# TitanStar Legends Rune Mastery Loadout Talent Calculator 9000
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a coding challenge for a mock-up design of a tool for the fictitious game "TitanStar Legends." The application simulates a rune tree, allowing players to allocate talent points and replicate their in-game loadouts. This repository contains all the necessary assets and implementation to meet the specified requirements.
 
-Currently, two official plugins are available:
+## Project Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Mobile-friendly/Responsive Design:** The application adapts to different screen sizes and devices, ensuring a seamless user experience.
+-   **Modern Styling:** Styles are created using custom CSS (with the option of SCSS/LESS/CSS Modules/CSS-in-JS) to match the provided mock-up.
+-   **Stateful JS Application:** The application manages state effectively to allow users to interact with the rune tree, adding and removing talent points with specific rules.
 
-## Expanding the ESLint configuration
+## Challenge Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   Left click to add points to a rune.
+-   Right click to remove points.
+-   A maximum of 6 points can be used in total.
+-   Each rune can only account for one point.
+-   The current point total is displayed.
+-   The runes must be selected in a specific order (e.g., points cannot be allocated to the final rune without first allocating points to the preceding runes in order).
 
-- Configure the top-level `parserOptions` property like this:
+## Code Expectations
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+-   Code organization and maintainability are prioritized.
+-   Modern JS best practices are followed.
+-   The project closely follows the design provided in the mock-up.
+-   Additional features or improvements are welcomed but not required.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To get started with this project, follow these steps:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/meicoder/DndBeyond-Challenge.git
+    cd DndBeyond-Challenge
+    ```
+
+2. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+This will launch the Vite development server, allowing you to work on the project with hot module replacement (HMR) and other useful features.
