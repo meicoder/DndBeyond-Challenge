@@ -1,7 +1,7 @@
-import classes from './header.module.css';
+import styles from './header.module.css';
 const Header = () => {
     return (
-        <h1 className={classes.header}>
+        <h1 className={styles.header}>
             TitanStar Legends - Rune Mastery Loadout Talent Calculator 9000
         </h1>
     );

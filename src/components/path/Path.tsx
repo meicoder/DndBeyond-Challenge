@@ -1,6 +1,6 @@
 import type { Path } from '../../store';
 import TalentItem from '../talentItem/TalentItem';
-import classes from './path.module.css';
+import styles from './path.module.css';
 
 interface PathProps {
     path: Path;
@@ -8,9 +8,9 @@ interface PathProps {
 const Path = ({ path }: PathProps) => {
     const { name, items, id } = path;
     return (
-        <div className={classes.container}>
+        <div className={styles.container}>
             <h2>{name}</h2>
-            <div className={classes.itemList}>
+            <div className={styles.itemList}>
                 {items.map((item) => {
                     return (
                         <TalentItem
